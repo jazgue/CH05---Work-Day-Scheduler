@@ -8,7 +8,7 @@ A single day work scheduler that saves user input and color codes by present, pa
 
 The following image shows the appearance of the work scheduler:
 
-(./images/workDayScheduler.png)
+![](./images/workDayScheduler.png)
 
 ## Link
 
