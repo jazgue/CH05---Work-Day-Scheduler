@@ -1,34 +1,32 @@
 // Display current date
 var currentDate = moment().format('dddd, MMMM DD');
 $("#currentDay").html(currentDate);
+// Gets current hour
+var cTime = moment().format("HH");
 
 function timeTracker()
 {
-    var cTime = moment().format("HH");
-
+    // Compares hour to actual time
     $(".time-block").each(function(){
         var bTime = $(this).attr("id").split("hour")[1];
 
-        if(cTime < bTime)
+        if(cTime == bTime)
+        {
+            $(this).addClass("present");
+        }
+        else if (cTime > bTime)
         {
             $(this).removeClass("future");
-            $(this).removeClass("present");
-            $(this).addClass("past");
+            $(this).addClass("past")
         }
-        else if (cTime === bTime)
-        {
-            $(this).removeClass("past");
-            $(this).removeClass("future");
-            $(this).addClass("present")
-        }
-        else
+        else if (cTime < bTime)
         {
             $(this).removeClass("present");
-            $(this).removeClass("past");
             $(this).addClass("future");
         }
     })
 }
+// Button to save data to local storage
 $(document).ready(function ()
 {
     $(".saveBtn").on("click", function(){
@@ -40,18 +38,17 @@ $(document).ready(function ()
 })
 
 // Gets item from local storage
-$("#hour_8 .description").val(localStorage.getItem("hour_8"));
-$("#hour_9 .description").val(localStorage.getItem("hour_9"));
-$("#hour_10 .description").val(localStorage.getItem("hour_10"));
-$("#hour_11 .description").val(localStorage.getItem("hour_11"));
-$("#hour_12 .description").val(localStorage.getItem("hour_12"));
-$("#hour_13 .description").val(localStorage.getItem("hour_13"));
-$("#hour_14 .description").val(localStorage.getItem("hour_14"));
-$("#hour_15 .description").val(localStorage.getItem("hour_15"));
-$("#hour_16 .description").val(localStorage.getItem("hour_16"));
-$("#hour_17 .description").val(localStorage.getItem("hour_17"));
+$("#9hour .description").val(localStorage.getItem("9"));
+$("#10hour .description").val(localStorage.getItem("10"));
+$("#11hour .description").val(localStorage.getItem("11"));
+$("#12hour .description").val(localStorage.getItem("12"));
+$("#13hour .description").val(localStorage.getItem("13"));
+$("#14hour .description").val(localStorage.getItem("14"));
+$("#15hour .description").val(localStorage.getItem("15"));
+$("#16hour .description").val(localStorage.getItem("16"));
+$("#17hour .description").val(localStorage.getItem("17"));
 
-
+// Button to clear data and clear from local storage
 $(".clearBtn").on("click", function(){
     $(".description").val("");
     window.localStorage.clear();
